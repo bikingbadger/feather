@@ -12,9 +12,6 @@ const waterPercent = document.querySelector('#water-perc');
 const weightMuscle = document.querySelector('#weight-muscle');
 const bellyIndex = document.querySelector('#belly-index');
 
-// Global variables
-//let weightHistory = [];
-
 addWeight.addEventListener('submit', function (event) {
     try {
         // Don't submit the form
@@ -94,19 +91,18 @@ const updateChart = () => {
         xLabel: 'Date', // optional
         yLabel: 'Weight (kg)', // optional
         data: {
-            labels: labelsDataSet, //['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            labels: labelsDataSet, 
             datasets: [{
                 label: 'Weight ',
-                //data: [30, 70, 200, 300, 500, 800, 1500, 2900, 5000, 8000],
                 data: weightDataSet,
             }, {
                 label: 'Muscle ',
-                //data: [0, 1, 30, 70, 80, 100, 50, 80, 40, 150],
                 data: muscleDataSet,
             }],
         },
         options: { // optional
             yTickCount: 10,
+            xTickCount: 5,
             legendPosition: chartXkcd.config.positionType.upRight
         }
     });
