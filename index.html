@@ -5,64 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weight Tracker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <article>
+    <article class="input-form">
       <form id="add-weight">
-        <label for="weight-date">Date</label>
-        <input type="date" name="weight-date" id="weight-date" />
-        <br />
-        <label for="weight">Enter weight?</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          name="weight-kilograms"
-          id="weight-kilograms"
-        />
-        <br />
-        <label for="fat-perc">Fat %</label>
-        <input type="number" step="0.1" min="0" name="fat-perc" id="fat-perc" />
-        <br />
-        <label for="weight-bone">Bone Weight</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          name="weight-bone"
-          id="weight-bone"
-        />
-        <br />
-        <label for="water-perc">Water %</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          name="water-perc"
-          id="water-perc"
-        />
-        <br />
-        <label for="weight-muscle">Muscle</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          name="weight-muscle"
-          id="weight-muscle"
-        />
-        <br />
-        <label for="belly-index">Belly Index</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          name="belly-index"
-          id="belly-index"
-        />
-        <br />
-        <button type="submit">Add weight</button>
+        <div class="input-item">
+          <label for="weight-date">Date</label>
+          <input type="date" name="weight-date" id="weight-date" />
+        </div>
+        <div class="input-item">
+          <label for="weight">Enter weight?</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            name="weight-kilograms"
+            id="weight-kilograms"
+          />
+        </div>
+        <div class="input-item">
+          <label for="fat-perc">Fat %</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            name="fat-perc"
+            id="fat-perc"
+          />
+        </div>
+        <div class="input-item">
+          <label for="weight-bone">Bone Weight</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            name="weight-bone"
+            id="weight-bone"
+          />
+        </div>
+        <div class="input-item">
+          <label for="water-perc">Water %</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            name="water-perc"
+            id="water-perc"
+          />
+        </div>
+        <div class="input-item">
+          <label for="weight-muscle">Muscle</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            name="weight-muscle"
+            id="weight-muscle"
+          />
+        </div>
+        <div class="input-item">
+          <label for="belly-index">Belly Index</label>
+          <input
+            type="number"
+            step="0.1"
+            min="0"
+            name="belly-index"
+            id="belly-index"
+          />
+        </div>
+        <div class="button-item">
+          <button type="submit">Add weight</button>
+        </div>
       </form>
-
+    </article>
+    <article class="graph">
       <ol id="weight-list"></ol>
       <div style="width: 95vh; display: inline-block;">
         <svg class="line-chart"></svg>
