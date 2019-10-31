@@ -1,93 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    <title>Weight Tracker</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <article class="input-form">
-      <form id="add-weight">
-        <div class="input-item">
-          <label for="weight-date">Date</label>
-          <input type="date" name="weight-date" id="weight-date" />
-        </div>
-        <div class="input-item">
-          <label for="weight">Enter weight?</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            name="weight-kilograms"
-            id="weight-kilograms"
-          />
-        </div>
-        <div class="input-item">
-          <label for="fat-perc">Fat %</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            name="fat-perc"
-            id="fat-perc"
-          />
-        </div>
-        <div class="input-item">
-          <label for="weight-bone">Bone Weight</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            name="weight-bone"
-            id="weight-bone"
-          />
-        </div>
-        <div class="input-item">
-          <label for="water-perc">Water %</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            name="water-perc"
-            id="water-perc"
-          />
-        </div>
-        <div class="input-item">
-          <label for="weight-muscle">Muscle</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            name="weight-muscle"
-            id="weight-muscle"
-          />
-        </div>
-        <div class="input-item">
-          <label for="belly-index">Belly Index</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            name="belly-index"
-            id="belly-index"
-          />
-        </div>
-        <div class="button-item">
-          <button type="submit">Add weight</button>
-        </div>
-      </form>
-    </article>
-    <article class="graph">
-      <ol id="weight-list"></ol>
-      <div style="width: 95vh; display: inline-block;">
-        <svg class="line-chart"></svg>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
-    </article>
 
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <title>Weight Tracker</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="form">
+    <form id="add-weight">
+      <div class="input-item-col">
+        <label for="weight-date">Date</label>
+        <input type="date" name="weight-date" id="weight-date" />
+      </div>
+      <div class="input-item-col">
+        <label for="weight">Enter weight?</label>
+        <input type="number" step="0.1" min="0" name="weight-kilograms" id="weight-kilograms" />
+      </div>
+      <div class="input-item-col">
+        <label for="fat-perc">Fat %</label>
+        <input type="number" step="0.1" min="0" name="fat-perc" id="fat-perc" />
+      </div>
+      <div class="input-item-col">
+        <label for="weight-bone">Bone Weight</label>
+        <input type="number" step="0.1" min="0" name="weight-bone" id="weight-bone" />
+      </div>
+      <div class="input-item-col">
+        <label for="water-perc">Water %</label>
+        <input type="number" step="0.1" min="0" name="water-perc" id="water-perc" />
+      </div>
+      <div class="input-item-col">
+        <label for="weight-muscle">Muscle</label>
+        <input type="number" step="0.1" min="0" name="weight-muscle" id="weight-muscle" />
+      </div>
+      <div class="input-item-col">
+        <label for="belly-index">Belly Index</label>
+        <input type="number" step="0.1" min="0" name="belly-index" id="belly-index" />
+      </div>
+      <div class="button-item  span-across">
+        <button type="submit">Add weight</button>
+      </div>
+    </form>
+  </div>
+  <div class= "graph"></div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
