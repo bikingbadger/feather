@@ -1,5 +1,3 @@
-console.log("Welcome to Local Storage");
-
 const jsonbox = "https://jsonbox.io/";
 
 // https://gomakethings.com/how-to-update-localstorage-with-vanilla-javascript/
@@ -27,11 +25,7 @@ const isURL = element => {
   return element.indexOf("value") > -1 ? element : "";
 };
 
-const updateDB = weight => {
-  console.log(`URL: ${url}`);
-  console.log(`Inserting into DB`);
-  console.log(weight);
-
+const createWeight = weight => {
   fetch(url, {
     headers: {
       Accept: "application/json",
@@ -39,13 +33,11 @@ const updateDB = weight => {
     },
     method: "POST",
     body: JSON.stringify(weight),
-  })
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-    });
+  }).then(response => {
+    if (response.ok) {
+      updateChart();
+    }
+  });
 };
 
 const updateWeightData = async () => {
@@ -62,7 +54,6 @@ const updateWeightData = async () => {
 const updateChart = async () => {
   // Check if there is already saved data
   await updateWeightData();
-  console.debug("Updating Chart");
   if (weightData) {
     let labelsDataSet = [];
     let weightDataSet = [];
@@ -81,12 +72,9 @@ const updateChart = async () => {
       muscleDataSet.push(muscleWeight);
     });
 
-    console.log("Building chart");
-
-    console.log(labelsDataSet);
-    console.log(weightDataSet);
-
+    // Setup Chart
     var container = document.getElementById("chart-area");
+    container.innerHTML = null;
     var data = {
       categories: labelsDataSet,
       series: [
@@ -150,10 +138,7 @@ const updateChart = async () => {
 
 // Main App
 const app = async () => {
-  console.log(`URL: ${url}`);
   if (url === null) {
-    console.log(`Fetching JSONBox URL`);
-
     // If the url is empty get a new jsonbox for saving data
     await fetch(jsonbox)
       .then(response => {
@@ -169,7 +154,6 @@ const app = async () => {
           .find(isURL) // find the url in the value attribute
           .toString()
           .split('"')[1]; // split the string with quotes and take the second value
-        console.log(`URL set ${boxurl}`);
         localStorage.setItem("url", boxurl);
       });
   }
@@ -199,24 +183,8 @@ addWeight.addEventListener(
         muscle: weightMuscle.value ? weightMuscle.value : 0,
         bellyIndex: bellyIndex.value ? bellyIndex.value : 0,
       };
-      // console.log("Weight", weight);
 
-      //   // Add value to the array
-      //   let currentWeightHistory = localStorage.getItem("weightValues")
-      //     ? JSON.parse(localStorage.getItem("weightValues"))
-      //     : [];
-      //   currentWeightHistory.push(weight);
-      //   currentWeightHistory.sort((a, b) => new Date(a.date) - new Date(b.date));
-      //   localStorage.setItem(
-      //     "weightValues",
-      //     JSON.stringify(currentWeightHistory),
-      //   );
-      //   console.table(currentWeightHistory);
-
-      updateDB(weight);
-
-      // Update the chart
-      updateChart();
+      createWeight(weight);
 
       // Reset Values
       weightDate.value = "";
