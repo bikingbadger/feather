@@ -7,48 +7,55 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <title>Weight Tracker</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="css/tui-chart.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-  <div class="form">
-    <form id="add-weight">
-      <div class="input-item-col">
-        <label for="weight-date">Date</label>
-        <input type="date" name="weight-date" id="weight-date" />
-      </div>
-      <div class="input-item-col">
-        <label for="weight">Enter weight?</label>
-        <input type="number" step="0.1" min="0" name="weight-kilograms" id="weight-kilograms" />
-      </div>
-      <div class="input-item-col">
-        <label for="fat-perc">Fat %</label>
-        <input type="number" step="0.1" min="0" name="fat-perc" id="fat-perc" />
-      </div>
-      <div class="input-item-col">
-        <label for="weight-bone">Bone Weight</label>
-        <input type="number" step="0.1" min="0" name="weight-bone" id="weight-bone" />
-      </div>
-      <div class="input-item-col">
-        <label for="water-perc">Water %</label>
-        <input type="number" step="0.1" min="0" name="water-perc" id="water-perc" />
-      </div>
-      <div class="input-item-col">
-        <label for="weight-muscle">Muscle</label>
-        <input type="number" step="0.1" min="0" name="weight-muscle" id="weight-muscle" />
-      </div>
-      <div class="input-item-col">
-        <label for="belly-index">Belly Index</label>
-        <input type="number" step="0.1" min="0" name="belly-index" id="belly-index" />
-      </div>
-      <div class="button-item  span-across">
-        <button type="submit">Add weight</button>
-      </div>
-    </form>
-  </div>
-  <div class= "graph"></div>
 
-  <script src="script.js"></script>
+  <div style="position: absolute; left: 50%;top: 0.5rem;">
+    <div class="icon"><img src="icons8-scale-64.png" alt="Scale Icon" srcset=""></div>
+  </div>
+  <form id="add-weight">
+    <div class="input-item-col">
+      <label for="weight-date">Date</label>
+      <input type="date" name="weight-date" id="weight-date" />
+    </div>
+    <div class="input-item-col">
+      <label for="weight">Enter weight?</label>
+      <input type="number" step="0.1" min="0" name="weight-kilograms" id="weight-kilograms" />
+    </div>
+    <div class="input-item-col">
+      <label for="fat-perc">Fat %</label>
+      <input type="number" step="0.1" min="0" name="fat-perc" id="fat-perc" />
+    </div>
+    <div class="input-item-col">
+      <label for="weight-bone">Bone Weight</label>
+      <input type="number" step="0.1" min="0" name="weight-bone" id="weight-bone" />
+    </div>
+    <div class="input-item-col">
+      <label for="water-perc">Water %</label>
+      <input type="number" step="0.1" min="0" name="water-perc" id="water-perc" />
+    </div>
+    <div class="input-item-col">
+      <label for="weight-muscle">Muscle</label>
+      <input type="number" step="0.1" min="0" name="weight-muscle" id="weight-muscle" />
+    </div>
+    <div class="input-item-col">
+      <label for="belly-index">Belly Index</label>
+      <input type="number" step="0.1" min="0" name="belly-index" id="belly-index" />
+    </div>
+    <div class="button-item  span-across">
+      <button type="submit">Add weight</button>
+    </div>
+  </form>
+
+  <div class='graph'>
+    <div id="chart-area"></div>
+  </div>
+  <script src="/assets/tui-chart-all.js"></script>
+  <script src="/assets/script.js"></script>
+
 </body>
 
 </html>

@@ -15,6 +15,7 @@ const waterPercent = document.querySelector("#water-perc");
 const weightMuscle = document.querySelector("#weight-muscle");
 const bellyIndex = document.querySelector("#belly-index");
 let url = localStorage.getItem("url");
+let weightData = [];
 
 // Filter for finding the boxurl element
 const isElement = element => {
@@ -47,6 +48,106 @@ const updateDB = weight => {
     });
 };
 
+const updateWeightData = async () => {
+  // Get the saved data from the DB
+  await fetch(url + "?limit=90&sort=date")
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      weightData = data;
+    });
+};
+
+const updateChart = async () => {
+  // Check if there is already saved data
+  await updateWeightData();
+  console.debug("Updating Chart");
+  if (weightData) {
+    let labelsDataSet = [];
+    let weightDataSet = [];
+    let muscleDataSet = [];
+    weightData.forEach((weight, index) => {
+      labelsDataSet.push(weight.date);
+      weightDataSet.push(weight.kilograms);
+
+      // Calculate muscle value if 0
+      let muscleWeight = weight.muscle;
+
+      // Get the previous muscle weight if 0
+      if ((muscleWeight === 0) & !(index === 0)) {
+        muscleWeight = weightData[index - 1].muscle;
+      }
+      muscleDataSet.push(muscleWeight);
+    });
+
+    console.log("Building chart");
+
+    console.log(labelsDataSet);
+    console.log(weightDataSet);
+
+    var container = document.getElementById("chart-area");
+    var data = {
+      categories: labelsDataSet,
+      series: [
+        {
+          name: "Weight",
+          data: weightDataSet,
+        },
+        {
+          name: "Muscle",
+          data: muscleDataSet,
+        },
+      ],
+    };
+    var options = {
+      chart: {
+        width: 1160,
+        height: 540,
+        title: "Weight Tracking",
+      },
+      yAxis: {
+        title: "Kilograms",
+      },
+      xAxis: {
+        title: "Date",
+        pointOnColumn: true,
+        dateFormat: "MMM",
+        tickInterval: "auto",
+      },
+      series: {
+        showDot: false,
+        zoomable: true,
+      },
+      tooltip: {
+        suffix: "kg",
+      },
+    };
+    var theme = {
+      series: {
+        colors: [
+          "#76b852",
+          "#458a3f",
+          "#295ba0",
+          "#2a4175",
+          "#289399",
+          "#289399",
+          "#617178",
+          "#8a9a9a",
+          "#516f7d",
+          "#dddddd",
+        ],
+      },
+    };
+    // For apply theme
+    tui.chart.registerTheme("myTheme", theme);
+    options.theme = "myTheme";
+    tui.chart.lineChart(container, data, options);
+  } else {
+    return;
+  }
+};
+
 // Main App
 const app = async () => {
   console.log(`URL: ${url}`);
@@ -72,6 +173,7 @@ const app = async () => {
         localStorage.setItem("url", boxurl);
       });
   }
+  updateChart();
 };
 
 app();
@@ -130,60 +232,3 @@ addWeight.addEventListener(
   },
   false,
 );
-
-const updateChart = () => {
-  // Check if there is already saved data
-  let saved = localStorage.getItem("weightValues");
-  let weightHistory = [];
-  if (saved) {
-    weightHistory = JSON.parse(saved);
-  } else {
-    return;
-  }
-
-  console.debug("Updating Chart");
-  const svg = document.querySelector(".line-chart");
-  let labelsDataSet = [];
-  let weightDataSet = [];
-  let muscleDataSet = [];
-  weightHistory.forEach((weight, index) => {
-    labelsDataSet.push(weight.date);
-    weightDataSet.push(weight.kilograms);
-
-    // Calculate muscle value if 0
-    let muscleWeight = weight.muscle;
-
-    // Get the previous muscle weight if 0
-    if ((muscleWeight === 0) & !(index === 0)) {
-      muscleWeight = weightHistory[index - 1].muscle;
-    }
-    muscleDataSet.push(muscleWeight);
-  });
-
-  const lineChart = new chartXkcd.Line(svg, {
-    title: "Weight over time", // optional
-    xLabel: "Date", // optional
-    yLabel: "Weight (kg)", // optional
-    data: {
-      labels: labelsDataSet,
-      datasets: [
-        {
-          label: "Weight ",
-          data: weightDataSet,
-        },
-        {
-          label: "Muscle ",
-          data: muscleDataSet,
-        },
-      ],
-    },
-    options: {
-      // optional
-      yTickCount: 10,
-      xTickCount: 5,
-      legendPosition: chartXkcd.config.positionType.upRight,
-    },
-  });
-};
-
-updateChart();
