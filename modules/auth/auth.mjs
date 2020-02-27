@@ -8,6 +8,8 @@ const configureClient = async () => {
   const response = await fetchAuthConfig();
   const config = await response.json();
 
+  //console.log(config.domain,config.clientId,config.audience);
+
   auth0 = await createAuth0Client({
     domain: config.domain,
     client_id: config.clientId,
@@ -22,7 +24,7 @@ const updateUI = async () => {
   try {
     const isAuthenticated = await auth0.isAuthenticated();
 
-    // console.log(`Authenticated: ${isAuthenticated}`);
+    //console.log(`Authenticated: ${isAuthenticated}`);
     if (isAuthenticated) {
       document.getElementById("btn-logout").classList.add("block");
       document.getElementById("btn-logout").classList.remove("hidden");
@@ -64,31 +66,33 @@ window.onload = async () => {
   await configureClient();
 
   const isAuthenticated = await auth0.isAuthenticated();
+  //console.log(`isAuthenticated: ${isAuthenticated}`);
 
   if (isAuthenticated) {
-    // console.log("> User is authenticated");
+    //console.log("> User is authenticated");
     window.history.replaceState({}, document.title, window.location.pathname);
     updateUI();
     return;
   }
 
-  // console.log("> User not authenticated");
+  //console.log("> User not authenticated");
 
   const query = window.location.search;
   const shouldParseResult = query.includes("code=") && query.includes("state=");
 
   if (shouldParseResult) {
-    // console.log("> Parsing redirect");
+    //console.log("> Parsing redirect");
     try {
       const result = await auth0.handleRedirectCallback();
-
+      // //console.log(`appState: ${result.appState}`);
+      // //console.log(`targetUrl: ${result.appState.targetUrl}`);
       if (result.appState && result.appState.targetUrl) {
         showContentFromUrl(result.appState.targetUrl);
       }
 
-      // console.log("Logged in!");
+      //console.log("Logged in!");
     } catch (err) {
-      console.log("Error parsing redirect:", err);
+      //console.log("Error parsing redirect:", err);
     }
 
     window.history.replaceState({}, document.title, "/");
