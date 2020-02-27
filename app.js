@@ -1,3 +1,5 @@
+import * as Auth from "./modules/auth/auth.mjs";
+
 const jsonbox = "https://jsonbox.io/";
 
 // https://gomakethings.com/how-to-update-localstorage-with-vanilla-javascript/
@@ -200,3 +202,15 @@ addWeight.addEventListener(
   },
   false,
 );
+
+const buttonHandler = e => {
+  if (e.target.id === "btn-login") {
+    Auth.login();
+  }
+
+  if (e.target.id === "btn-logout") {
+    Auth.logout();
+  }
+};
+
+document.addEventListener("click", buttonHandler), false;

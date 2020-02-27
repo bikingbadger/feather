@@ -61,7 +61,7 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
 }
 
-button {
+/* button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -80,7 +80,7 @@ button::hover,
 button::active,
 button::focus {
   background: #43a047;
-}
+} */
 
 .graph {
   display: grid;
