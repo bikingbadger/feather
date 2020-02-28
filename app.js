@@ -15,7 +15,7 @@ const waterPercent = document.querySelector("#water-perc");
 const weightMuscle = document.querySelector("#weight-muscle");
 const bellyIndex = document.querySelector("#belly-index");
 // let url = localStorage.getItem("url");
-const url = "http://localhost:3000/v1/weight";
+const url = "https://api-hiltonmeyer-com.herokuapp.com/v1/weight";
 let weightData = [];
 
 // Filter for finding the boxurl element
