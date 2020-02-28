@@ -14,7 +14,8 @@ const weightBone = document.querySelector("#weight-bone");
 const waterPercent = document.querySelector("#water-perc");
 const weightMuscle = document.querySelector("#weight-muscle");
 const bellyIndex = document.querySelector("#belly-index");
-let url = localStorage.getItem("url");
+// let url = localStorage.getItem("url");
+const url = "http://localhost:3000/v1/weight";
 let weightData = [];
 
 // Filter for finding the boxurl element
@@ -28,18 +29,30 @@ const isURL = element => {
 };
 
 const createWeight = weight => {
+  // console.log(url);
+  const accessToken = localStorage.getItem("accessToken");
+  // console.log(accessToken);
+  // console.log(weight);
   fetch(url, {
+    // mode: "cors",
     headers: {
       Accept: "application/json",
+      Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     },
     method: "POST",
     body: JSON.stringify(weight),
-  }).then(response => {
-    if (response.ok) {
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
       updateChart();
-    }
-  });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 const updateWeightData = async () => {
@@ -177,15 +190,15 @@ addWeight.addEventListener(
       }
 
       const weight = {
-        date: weightDate.value,
-        kilograms: weightKilograms.value,
+        weightDate: weightDate.value,
+        weightKilograms: weightKilograms.value,
         fatPercent: fatPercent.value ? fatPercent.value : 0,
-        bone: weightBone.value ? weightBone.value : 0,
+        weightBoneKilograms: weightBone.value ? weightBone.value : 0,
         waterPercent: waterPercent.value ? waterPercent.value : 0,
-        muscle: weightMuscle.value ? weightMuscle.value : 0,
+        weightMuscleKilograms: weightMuscle.value ? weightMuscle.value : 0,
         bellyIndex: bellyIndex.value ? bellyIndex.value : 0,
       };
-
+      console.log(weight);
       createWeight(weight);
 
       // Reset Values
