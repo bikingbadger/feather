@@ -1,0 +1,23 @@
+{
+  "name": "feather",
+  "version": "1.0.0",
+  "description": "Local storage option for saving your weight daily and tracking it over time. Go to [Weight Tracker](https://bikingbadger.github.io/weight-tracker/) and start saving your data over time",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bikingbadger/weight-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bikingbadger/weight-tracker/issues"
+  },
+  "homepage": "https://github.com/bikingbadger/weight-tracker#readme",
+  "devDependencies": {
+    "tailwindcss": "^1.2.0"
+  }
+}
