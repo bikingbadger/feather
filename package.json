@@ -1,23 +1,58 @@
 {
   "name": "feather",
   "version": "1.0.0",
+  "private": true,
   "description": "Local storage option for saving your weight daily and tracking it over time. Go to [Weight Tracker](https://bikingbadger.github.io/weight-tracker/) and start saving your data over time",
-  "main": "app.js",
+  "author": "",
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "tailwind": "tailwind build src/css/style.css -o dist/css/style.css"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bikingbadger/weight-tracker.git"
+  "main": "app.js",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "vue": "^2.6.11"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "tailwindcss": "^1.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "_id": "feather@1.0.0",
   "bugs": {
     "url": "https://github.com/bikingbadger/weight-tracker/issues"
   },
   "homepage": "https://github.com/bikingbadger/weight-tracker#readme",
-  "devDependencies": {
-    "tailwindcss": "^1.2.0"
+  "keywords": [],
+  "license": "MIT",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bikingbadger/weight-tracker.git"
   }
 }
