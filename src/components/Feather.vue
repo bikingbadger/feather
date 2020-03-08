@@ -10,25 +10,19 @@
         <button
           id="btn-login"
           class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
-        >
-          Log in
-        </button>
+        >Log in</button>
         <button
           id="btn-logout"
           class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
-        >
-          Log out
-        </button>
+        >Log out</button>
       </div>
     </header>
     <button
       id="add-weight"
       @click="showModal = true"
       class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
-    >
-      Add Weight
-    </button>
-    <modal v-if="showModal" @close="showModal = false"></modal>
+    >Add Weight</button>
+    <Weight v-if="showModal" @close="showModal = false"></Weight>
     <div class="graph">
       <div id="chart-area"></div>
     </div>
@@ -36,11 +30,19 @@
 </template>
 
 <script>
+import Weight from "./Weight.vue";
+
 export default {
   name: "HelloWorld",
   props: {
-    msg: String,
+    msg: String
   },
+  components: {
+    Weight
+  },
+  data: () => ({
+    showModal: false
+  })
 };
 </script>
 
