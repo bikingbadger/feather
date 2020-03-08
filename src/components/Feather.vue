@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div style="scale">
-      <div class="icon">
+    <div class="grid grid-cols-1">
+      <div class="grid justify-center">
         <img src="../assets/icons8-scale-64.png" alt="Scale Icon" />
       </div>
     </div>
@@ -10,18 +10,24 @@
         <button
           id="btn-login"
           class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
-        >Log in</button>
+        >
+          Log in
+        </button>
         <button
           id="btn-logout"
           class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
-        >Log out</button>
+        >
+          Log out
+        </button>
+        <button
+          id="add-weight"
+          @click="showModal = true"
+          class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
+        >
+          Add Weight
+        </button>
       </div>
     </header>
-    <button
-      id="add-weight"
-      @click="showModal = true"
-      class="min-w-1/12 bg-transparent hover:bg-green-500 text-green-700 font-semibold uppercase hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded text-sm"
-    >Add Weight</button>
     <Weight v-if="showModal" @close="showModal = false"></Weight>
     <div class="graph">
       <div id="chart-area"></div>
@@ -35,20 +41,20 @@ import Weight from "./Weight.vue";
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
   },
   components: {
-    Weight
+    Weight,
   },
   data: () => ({
-    showModal: false
-  })
+    showModal: false,
+  }),
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
+/* h3 {
   margin: 40px 0 0;
 }
 ul {
@@ -67,5 +73,5 @@ a {
   position: absolute;
   left: 50%;
   top: 0.5rem;
-}
+} */
 </style>
