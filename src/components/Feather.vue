@@ -6,10 +6,10 @@
       </div>
     </div>
     <header>
-      <div>
-        <button id="btn-login">Log in</button>
-        <button id="btn-logout">Log out</button>
-        <button id="add-weight" @click="showModal()">Add Weight</button>
+      <div class="grid md:grid-flow-col p-4 gap-2">
+        <!-- <button id="btn-login">Log in</button>
+        <button id="btn-logout">Log out</button> -->
+        <button @click="showModal()">Add Weight</button>
       </div>
     </header>
     <Weight v-if="openModal" v-on:hideModal="hideModal()"></Weight>
