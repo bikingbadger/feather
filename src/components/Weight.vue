@@ -180,7 +180,7 @@ export default {
       this.weightMuscle = '';
       this.bellyIndex = '';
 
-      //this.closeModal();
+      this.closeModal();
     },
   },
 };
