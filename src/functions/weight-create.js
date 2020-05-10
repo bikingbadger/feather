@@ -11,13 +11,13 @@ const client = new faunadb.Client({
 exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
   console.log('body:',event.body);
-  if (!event.body.weight) {
-    return callback(null, {
-      statusCode: 500,
-      body: JSON.stringify('Expected weight object'),
-    });
-  }
-  const data = JSON.parse(event.body);
+//   if (!event.body.weight) {
+//     return callback(null, {
+//       statusCode: 500,
+//       body: JSON.stringify('Expected weight object'),
+//     });
+//   }
+//   const data = JSON.parse(event.body);
   
   //   const todoItem = {
   //     data: data,
