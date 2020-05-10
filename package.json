@@ -6,6 +6,8 @@
   "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "prebuild": "netlify-lambda build src/functions",
+    "functions": "netlify-lambda serve src/functions",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "tailwind": "tailwind build src/css/style.css -o dist/css/style.css"
