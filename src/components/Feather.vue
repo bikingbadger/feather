@@ -29,6 +29,8 @@ export default {
   },
   data: () => ({
     openModal: false,
+    weight: [],
+    url: '/.netlify/functions/weight-read-all',
   }),
   methods: {
     showModal: function() {
@@ -36,7 +38,27 @@ export default {
     },
     hideModal: function() {
       this.openModal = false;
-    }
+    },
+    getWeightValues: async function() {
+      this.weight = await fetch(this.url, {
+        // mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'GET',
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          return data;
+        });
+      // console.log(this.weight[0].weightKilograms);
+    },
+  },
+  created() {
+    this.getWeightValues();
   },
 };
 </script>
