@@ -110,14 +110,14 @@
 </template>
 
 <script>
-const url = 'https://api-hiltonmeyer-com.herokuapp.com/v1/weight';
-const createWeight = weight => {
+const url = '/.netlify/functions/weight-create';
+const createWeight = (weight) => {
   // console.log(url);
-  const accessToken = localStorage.getItem('accessToken');
-  console.log(accessToken);
+  const accessToken = 'Test123'; //localStorage.getItem('accessToken');
+  // console.log(accessToken);
   // console.log(weight);
   fetch(url, {
-    mode: 'cors',
+    // mode: 'cors',
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${accessToken}`,
@@ -126,14 +126,15 @@ const createWeight = weight => {
     method: 'POST',
     body: JSON.stringify(weight),
   })
-    .then(response => {
+    .then((response) => {
+      console.log(response);
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
       // TODO: updateChart();
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
