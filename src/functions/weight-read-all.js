@@ -12,16 +12,20 @@ exports.handler = (event, context, callback) => {
     .query(q.Paginate(q.Match(q.Ref('indexes/all_weight'))))
     .then((response) => {
       const references = response.data;
-      console.log('references', references);
+      // console.log('references', references);
       const getAllDataQuery = references.map((ref) => {
-        console.log(ref);
+        // console.log(ref);
         return q.Get(ref);
       });
       // then query the refs
       return client.query(getAllDataQuery).then((ret) => {
+        console.log(ret);
+        const weightSeries = ret.map(data => {
+          return data.data;
+        })
         return callback(null, {
           statusCode: 200,
-          body: JSON.stringify(ret),
+          body: JSON.stringify(weightSeries),
         });
       });
     })
