@@ -33,6 +33,7 @@
     "eslint-plugin-vue": "^6.1.2",
     "jest": "^26.0.1",
     "netlify-lambda": "^1.6.3",
+    "supertest": "^4.0.2",
     "tailwindcss": "^1.2.0",
     "vue-template-compiler": "^2.6.11"
   },
