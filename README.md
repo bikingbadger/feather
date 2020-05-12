@@ -1,5 +1,7 @@
 # Weight Tracker
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/83d64573-4162-4124-8d80-ef0599c0cb0a/deploy-status)](https://app.netlify.com/sites/feather-weight/deploys)
+
 Local storage option for saving your weight daily and tracking it over time.
 Go to [Weight Tracker](https://bikingbadger.github.io/weight-tracker/) and start saving your data over time
 
