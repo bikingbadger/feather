@@ -1,20 +1,18 @@
 <template>
   <div id="app" class="container mx-auto">
-    <Feather/>
+    <Feather />
   </div>
 </template>
 
 <script>
-import Feather from './components/Feather.vue'
+import Feather from './components/Feather.vue';
 
 export default {
   name: 'App',
   components: {
-    Feather
+    Feather,
   },
-}
-
-
+};
 </script>
 
 <style>
