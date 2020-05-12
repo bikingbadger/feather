@@ -4,4 +4,4 @@
   # This is where Netlify will look for your lambda functions.
   functions = "functions"
   # This is the directory that you are publishing from.
-  # publish = "dist"
+  publish = "dist"
