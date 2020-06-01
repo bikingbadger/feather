@@ -5,6 +5,7 @@
         v-if="loaded"
         width="800"
         type="line"
+        stroke="smooth"
         :options="pvOptions"
         :series="pvSeries"
       />
@@ -51,20 +52,23 @@ export default {
         .then((data) => {
           return data;
         });
-      // console.log(this.weight[0].weightKilograms);
     },
   },
   async created() {
     // Fetch the data via API and convert response to json
     const resp = await fetch(this.url);
-    // console.log(resp);
     // Store the json values into the
     this.weightData = await resp.json();
-    // console.log(data);
     this.pvOptions = {
       xaxis: {
+        // TODO: See if you can set the type to date for better formatting
+        type: 'datetime',
         categories: [],
       },
+      stroke: {
+        curve: 'smooth',
+      },
+      colors: ['#002FA7'],
     };
 
     this.pvSeries = [
@@ -120,10 +124,8 @@ export default {
         // Create the empty date for consistent look
         // The month and date need to be padded for single digit numbers
         const emptyYear = currentDate.getFullYear();
-        const emptyMonth = currentDate
-          .getMonth()
-          .toString()
-          .padStart(2, '0');
+        let emptyMonth = currentDate.getMonth() + 1;
+        emptyMonth.toString().padStart(2, '0');
         const emptyDate = currentDate
           .getDate()
           .toString()
@@ -145,12 +147,13 @@ export default {
       // Set the date to the next day
       currentDate.setDate(currentDate.getDate() + 1);
     }
-    
-    // Set the values in the graph by looping over the array with 
+
+    // Set the values in the graph by looping over the array with
     // the filled days
     this.weightData.forEach((value) => {
-      // console.log('Weight', value.weightDate);
-      this.pvOptions.xaxis.categories.push(value.weightDate);
+      this.pvOptions.xaxis.categories.push(
+        new Date(value.weightDate).getTime(),
+      );
       this.pvSeries[0].data.push(value.weightKilograms);
     });
 
