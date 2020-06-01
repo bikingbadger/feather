@@ -1,27 +1,16 @@
 <template>
-  <div id="app" class="container mx-auto">
-    <Feather />
+  <div id="app" class="container mx-auto text-center">
+    <div class="grid grid-cols-1">
+      <div class="grid justify-center">
+        <img src="@/assets/icons8-scale-64.png" alt="Scale Icon" />
+      </div>
+    </div>
+    <div id="nav" class="p-8">
+      <router-link to="/" class="font-bold">Home</router-link> |
+      <router-link to="/weight" class="font-bold">Weight</router-link>
+    </div>
+    <router-view />
   </div>
 </template>
 
-<script>
-import Feather from './components/Feather.vue';
-
-export default {
-  name: 'App',
-  components: {
-    Feather,
-  },
-};
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>

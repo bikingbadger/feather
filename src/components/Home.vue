@@ -1,37 +1,23 @@
 <template>
   <div id="app">
-    <div class="grid grid-cols-1">
-      <div class="grid justify-center">
-        <img src="../assets/icons8-scale-64.png" alt="Scale Icon" />
-      </div>
+    <div class="grid justify-center border-2 rounded border-blue-500 p-4 mx-32">
+      <VueApexCharts
+        v-if="loaded"
+        width="800"
+        type="line"
+        :options="pvOptions"
+        :series="pvSeries"
+      />
     </div>
-    <header>
-      <div class="grid md:grid-flow-col p-4 gap-2">
-        <!-- <button id="btn-login">Log in</button>
-        <button id="btn-logout">Log out</button> -->
-        <button @click="showModal()">Add Weight</button>
-      </div>
-    </header>
-    <Weight v-if="openModal" v-on:hideModal="hideModal()"></Weight>
-    <VueApexCharts
-      v-if="loaded"
-      width="800"
-      type="line"
-      :options="pvOptions"
-      :series="pvSeries"
-    >
-    </VueApexCharts>
   </div>
 </template>
 
 <script>
-import Weight from './Weight.vue';
 import VueApexCharts from 'vue-apexcharts';
 
 export default {
   name: 'Feather',
   components: {
-    Weight,
     VueApexCharts,
   },
   data: () => ({
@@ -71,7 +57,8 @@ export default {
   async created() {
     // Fetch the data via API and convert response to json
     const resp = await fetch(this.url);
-    // Store the json values into the 
+    console.log(resp);
+    // Store the json values into the
     this.weightData = await resp.json();
     // console.log(data);
     this.pvOptions = {
