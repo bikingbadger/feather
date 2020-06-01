@@ -12,6 +12,10 @@ button:hover {
   transition: opacity 0.25s ease;
 }
 
+.router-link-active {
+  @apply text-green-500
+}
+
 @tailwind components;
 
 @tailwind utilities;
