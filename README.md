@@ -21,6 +21,15 @@ npm install
 
 ## Development
 
+Run the netlify functions, this will run the functions on port 9000.
+
+```
+npm run functions
+```
+
+To run the app run the `serve` script. This will use the Netlify functions as part of the `vue.config.js` to proxy the functions running in `http://localhost:9000` to the application port `http://localhost:8080`. This gives the ability of the application to use the functions as if they were running on the server.
+
 ```
 npm run serve
 ```
+
