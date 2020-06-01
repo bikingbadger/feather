@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    
-    <VueApexCharts
-      v-if="loaded"
-      width="800"
-      type="line"
-      :options="pvOptions"
-      :series="pvSeries"
-    >
-    </VueApexCharts>
+    <div class="grid justify-center border-2 rounded border-green-500 p-4 mx-32">
+      <VueApexCharts
+        v-if="loaded"
+        width="800"
+        type="line"
+        :options="pvOptions"
+        :series="pvSeries"
+      />
+    </div>
   </div>
 </template>
 
@@ -57,7 +57,8 @@ export default {
   async created() {
     // Fetch the data via API and convert response to json
     const resp = await fetch(this.url);
-    // Store the json values into the 
+    console.log(resp);
+    // Store the json values into the
     this.weightData = await resp.json();
     // console.log(data);
     this.pvOptions = {
