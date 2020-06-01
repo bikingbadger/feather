@@ -1,37 +1,16 @@
 <template>
-  <div id="app">
+  <div id="app" class="container mx-auto text-center">
     <div class="grid grid-cols-1">
       <div class="grid justify-center">
         <img src="@/assets/icons8-scale-64.png" alt="Scale Icon" />
       </div>
     </div>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/weight">Weight</router-link>
+    <div id="nav" class="p-8">
+      <router-link to="/" class="font-bold">Home</router-link> |
+      <router-link to="/weight" class="font-bold">Weight</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style></style>
