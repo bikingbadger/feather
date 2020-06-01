@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="grid justify-center border-2 rounded border-green-500 p-4 mx-32">
+    <div class="grid justify-center border-2 rounded border-blue-500 p-4 mx-32">
       <VueApexCharts
         v-if="loaded"
         width="800"
