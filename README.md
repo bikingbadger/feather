@@ -12,3 +12,15 @@ Because it's local I don't have to worry about credentials
 I will update and optimize this to use the things I am learning during my courses on [Go Make Things](https://gomakethings.com)
 
 At the moment I am using a third party graph. In the future I may try and use my own version.
+
+## Install
+
+```
+npm install
+```
+
+## Development
+
+```
+npm run serve
+```
