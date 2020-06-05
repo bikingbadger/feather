@@ -1,12 +1,6 @@
 <template>
   <!-- opacity-0 pointer-events-none  -->
-  <div
-    class="modal absolute w-full h-full top-0 left-0 flex items-center justify-center"
-  >
-    <div
-      class="modal-overlay absolute w-full h-full bg-black opacity-25 top-0 left-0 cursor-pointer"
-    ></div>
-
+  <div>
     <div
       class="absolute md:w-1/2 py-8 bg-white rounded-lg shadow-lg md:text-xl grid justify-center gap-4"
     >
@@ -111,33 +105,6 @@
 
 <script>
 const url = '/.netlify/functions/weight-create';
-const createWeight = (weight) => {
-  // console.log(url);
-  const accessToken = 'Test123'; //localStorage.getItem('accessToken');
-  // console.log(accessToken);
-  // console.log(weight);
-  fetch(url, {
-    // mode: 'cors',
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-    body: JSON.stringify(weight),
-  })
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      // TODO: updateChart();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
 
 export default {
   data: () => ({
@@ -150,10 +117,6 @@ export default {
     bellyIndex: 0,
   }),
   methods: {
-    closeModal: function() {
-      console.log('Close Modal');
-      this.$emit('hideModal');
-    },
     createWeight: function() {
       if (this.weightKilograms <= 0) {
         alert('Weight is required');
@@ -170,7 +133,31 @@ export default {
         bellyIndex: this.bellyIndex ? this.bellyIndex : 0,
       };
       console.log(weight);
-      createWeight(weight);
+      //Create weight
+      const accessToken = 'Test123'; //localStorage.getItem('accessToken');
+      // console.log(accessToken);
+      // console.log(weight);
+      fetch(url, {
+        // mode: 'cors',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify(weight),
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          // TODO: updateChart();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
       // Reset Values
       this.weightDate = '';
@@ -180,8 +167,6 @@ export default {
       this.waterPercent = '';
       this.weightMuscle = '';
       this.bellyIndex = '';
-
-      this.closeModal();
     },
   },
 };

@@ -12,3 +12,24 @@ Because it's local I don't have to worry about credentials
 I will update and optimize this to use the things I am learning during my courses on [Go Make Things](https://gomakethings.com)
 
 At the moment I am using a third party graph. In the future I may try and use my own version.
+
+## Install
+
+```
+npm install
+```
+
+## Development
+
+Run the netlify functions, this will run the functions on port 9000.
+
+```
+npm run functions
+```
+
+To run the app run the `serve` script. This will use the Netlify functions as part of the `vue.config.js` to proxy the functions running in `http://localhost:9000` to the application port `http://localhost:8080`. This gives the ability of the application to use the functions as if they were running on the server.
+
+```
+npm run serve
+```
+
