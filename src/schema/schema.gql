@@ -1,0 +1,13 @@
+type Weight {
+  weightDate: String!
+  weightKilograms: Float!
+  fatPercent: Float
+  weightBone: Float
+  waterPercent: Float
+  weightMuscle: Float
+  bellyIndex: Float
+}
+
+type Query {
+  allWeights: [Weight!]
+}
