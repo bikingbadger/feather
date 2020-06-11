@@ -127,3 +127,5 @@ node_modules
 
 ## Netlify build functions
 /functions
+# Local Netlify folder
+.netlify
