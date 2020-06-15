@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <div class="grid justify-center border-2 rounded border-blue-500 p-4 mx-32">
+    <div
+      class="grid justify-center md:border-2 rounded border-blue-500 p-4 md:mx-32 gap-4 text-sm md:text-xl"
+    >
       <VueApexCharts
         v-if="loaded"
-        width="800"
+        width="100%"
         type="line"
         stroke="smooth"
         :options="pvOptions"
