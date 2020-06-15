@@ -2,6 +2,8 @@ require('dotenv').config();
 const axios = require('axios');
 
 exports.handler = (event, context, callback) => {
+  console.log('===============================================');
+  console.log('===============================================');
   console.log(`${event.httpMethod}: ${event.path}`);
   return axios({
     url: 'https://graphql.fauna.com/graphql',
@@ -26,12 +28,16 @@ exports.handler = (event, context, callback) => {
   })
     .then((result) => {
       console.log(result.data);
+      console.log('===============================================');
+      console.log('===============================================');
       return callback(null, {
         statusCode: 200,
         body: JSON.stringify(result.data),
       });
     })
     .catch((error) => {
+      console.log('===============================================');
+      console.log('===============================================');
       return callback(null, {
         statusCode: 400,
         body: JSON.stringify(error),
