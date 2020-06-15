@@ -27,12 +27,13 @@ exports.handler = (event, context, callback) => {
     },
   })
     .then((result) => {
-      console.log(result.data);
+      const weightArray = result.data.data.allWeights.data;
+      console.log('weightArray',weightArray);
       console.log('===============================================');
       console.log('===============================================');
       return callback(null, {
         statusCode: 200,
-        body: JSON.stringify(result.data),
+        body: JSON.stringify(weightArray),
       });
     })
     .catch((error) => {
