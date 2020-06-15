@@ -1,6 +1,6 @@
 <template>
   <!-- opacity-0 pointer-events-none  -->
-  <div>
+   <div class="grid justify-center p-4 mx-32">
     <div
       class="absolute md:w-1/2 py-8 bg-white rounded-lg shadow-lg md:text-xl grid justify-center gap-4"
     >
