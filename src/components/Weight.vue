@@ -8,8 +8,7 @@
     > -->
     <div class="grid grid-cols-3 grid-flow-col gap-4 mx-4">
       <label class="grid justify-start py-2" for="weight-date">Date</label>
-      <in
-        put
+      <input
         class="bg-blue-100 rounded p-2 col-span-2"
         type="date"
         name="weight-date"
