@@ -94,7 +94,7 @@ export default {
       if (dateA < dateB) return -1;
       return 0;
     });
-    console.log(this.weightData);
+    // console.log(this.weightData);
 
     /**
      * Fill the array with empty dates where a weight has not been input
@@ -117,14 +117,14 @@ export default {
     while (currentDate <= maxDate) {
       // Use the counter to set the date
       const weightDate = new Date(this.weightData[counter].weightDate);
-      console.log(currentDate, weightDate);
+      // console.log(currentDate, weightDate);
       // Check the values of the currentDate to the one in the array
       // If the dates are not equal then push an empty value into the array
       // This fills the array with the current dates in the loop where there are
       //   no values in the weight data
       const dateWeight = `${weightDate.getFullYear()}${weightDate.getMonth()}${weightDate.getDate()}`;
       const dateCurrent = `${currentDate.getFullYear()}${currentDate.getMonth()}${currentDate.getDate()}`;
-      console.log(dateCurrent, dateWeight);
+      // console.log(dateCurrent, dateWeight);
       if (dateWeight !== dateCurrent) {
         // Create the empty date for consistent look
         // The month and date need to be padded for single digit numbers
