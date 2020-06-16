@@ -6,7 +6,7 @@ console.log('===============================================');
 exports.handler = (event, context, callback) => {
   console.log(`${event.httpMethod}: ${event.path}`);
   const weight = JSON.parse(event.body);
-  console.log(weight.weightKilograms);
+  console.log(weight);
   const query = `mutation CreateWeight {
     createWeight(data: {
       weightDate: "${weight.weightDate}"
