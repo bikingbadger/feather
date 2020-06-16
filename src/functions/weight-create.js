@@ -6,16 +6,16 @@ console.log('===============================================');
 exports.handler = (event, context, callback) => {
   console.log(`${event.httpMethod}: ${event.path}`);
   const weight = JSON.parse(event.body);
-  console.log(weight.weightKilograms);
+  console.log(weight);
   const query = `mutation CreateWeight {
     createWeight(data: {
       weightDate: "${weight.weightDate}"
-      weightKilograms: ${weight.weightKilograms | 0}
-      weightBone: ${weight.weightBone | 0}
-      weightMuscle: ${weight.weightMuscle | 0}
-      waterPercent: ${weight.waterPercent | 0}
-      fatPercent: ${weight.fatPercent | 0}
-      bellyIndex: ${weight.bellyIndex | 0}
+      weightKilograms: ${weight.weightKilograms || 0}
+      weightBone: ${weight.weightBone || 0}
+      weightMuscle: ${weight.weightMuscle || 0}
+      waterPercent: ${weight.waterPercent || 0}
+      fatPercent: ${weight.fatPercent || 0}
+      bellyIndex: ${weight.bellyIndex || 0}
     }) {
       weightDate
       weightKilograms
