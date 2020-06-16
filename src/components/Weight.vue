@@ -106,12 +106,12 @@ const url = '/.netlify/functions/weight-create';
 export default {
   data: () => ({
     weightDate: '',
-    weightKilograms: 0,
-    fatPercent: 0,
-    weightBone: 0,
-    waterPercent: 0,
-    weightMuscle: 0,
-    bellyIndex: 0,
+    weightKilograms: 0.0,
+    fatPercent: 0.0,
+    weightBone: 0.0,
+    waterPercent: 0.0,
+    weightMuscle: 0.0,
+    bellyIndex: 0.0,
   }),
   methods: {
     createWeight: function() {
@@ -123,11 +123,11 @@ export default {
       const weight = {
         weightDate: this.weightDate,
         weightKilograms: this.weightKilograms,
-        fatPercent: this.fatPercent ? this.fatPercent : 0,
-        weightBoneKilograms: this.weightBone ? this.weightBone : 0,
-        waterPercent: this.waterPercent ? this.waterPercent : 0,
-        weightMuscleKilograms: this.weightMuscle ? this.weightMuscle : 0,
-        bellyIndex: this.bellyIndex ? this.bellyIndex : 0,
+        fatPercent: this.fatPercent ? this.fatPercent : 0.0,
+        weightBoneKilograms: this.weightBone ? this.weightBone : 0.0,
+        waterPercent: this.waterPercent ? this.waterPercent : 0.0,
+        weightMuscleKilograms: this.weightMuscle ? this.weightMuscle : 0.0,
+        bellyIndex: this.bellyIndex ? this.bellyIndex : 0.0,
       };
       console.log(weight);
       //Create weight
