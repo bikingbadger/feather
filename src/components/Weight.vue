@@ -124,9 +124,9 @@ export default {
         weightDate: this.weightDate,
         weightKilograms: this.weightKilograms,
         fatPercent: this.fatPercent ? this.fatPercent : 0.0,
-        weightBoneKilograms: this.weightBone ? this.weightBone : 0.0,
+        weightBone: this.weightBone ? this.weightBone : 0.0,
         waterPercent: this.waterPercent ? this.waterPercent : 0.0,
-        weightMuscleKilograms: this.weightMuscle ? this.weightMuscle : 0.0,
+        weightMuscle: this.weightMuscle ? this.weightMuscle : 0.0,
         bellyIndex: this.bellyIndex ? this.bellyIndex : 0.0,
       };
       console.log(weight);
