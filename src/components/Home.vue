@@ -81,24 +81,6 @@ export default {
     ];
 
     /**
-     * It will also sort the data from oldest to newest based on the date
-     */
-    this.weightData.sort((a, b) => {
-      const dateA = new Date(a.weightDate);
-      const dateB = new Date(b.weightDate);
-
-      /**
-       * Return result based on whether the date is bigger or smaller
-       * The return is based on sorting oldest to newest so
-       * newer values should come after older ones
-       */
-      if (dateA > dateB) return 1;
-      if (dateA < dateB) return -1;
-      return 0;
-    });
-    // console.log(this.weightData);
-
-    /**
      * Fill the array with empty dates where a weight has not been input
      * This is to give the graph x-axis the correct number of days
      */
