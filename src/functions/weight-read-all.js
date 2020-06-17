@@ -16,11 +16,13 @@ exports.handler = (event, context, callback) => {
     data: {
       query: `
         query FindAllWeights {
-          allWeights {
+          allWeights(_size: 90) {
             data {
               weightDate
               weightKilograms
             }
+            before
+            after
           }
         }
         `,
@@ -37,6 +39,7 @@ exports.handler = (event, context, callback) => {
       });
     })
     .catch((error) => {
+      console.log(error);
       console.log('===============================================');
       console.log('===============================================');
       return callback(null, {
