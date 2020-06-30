@@ -61,6 +61,8 @@ export default {
     const resp = await fetch(this.url);
     // Store the json values into the
     this.weightData = await resp.json();
+    // Check if there is any data, if there isn't then exit the function
+    if (this.weightData.length === 0) return;
     this.pvOptions = {
       xaxis: {
         type: 'datetime',
