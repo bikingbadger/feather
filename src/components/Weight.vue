@@ -1,6 +1,6 @@
 <template>
   <!-- opacity-0 pointer-events-none  -->
-  <div
+  <form v-on:submit="createWeight"
     class="grid justify-center md:border-2 rounded border-blue-500 p-4 md:mx-32 gap-4 text-sm md:text-xl"
   >
     <!-- <div
@@ -93,11 +93,11 @@
       />
     </div>
     <div class="button-item span-across">
-      <button @click="createWeight">
+      <button @click.prevent="createWeight">
         Add weight
       </button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -106,12 +106,12 @@ const url = '/.netlify/functions/weight-create';
 export default {
   data: () => ({
     weightDate: '',
-    weightKilograms: 0.0,
-    fatPercent: 0.0,
-    weightBone: 0.0,
-    waterPercent: 0.0,
-    weightMuscle: 0.0,
-    bellyIndex: 0.0,
+    weightKilograms: null,
+    fatPercent: null,
+    weightBone: null,
+    waterPercent: null,
+    weightMuscle: null,
+    bellyIndex: null,
   }),
   methods: {
     createWeight: function() {
