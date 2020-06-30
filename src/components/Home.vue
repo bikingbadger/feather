@@ -1,8 +1,19 @@
 <template>
   <div id="app">
+    <div class="grid grid-cols-3 grid-flow-col p-4 md:mx-32 gap-4 mx-4">
+      <label class="grid justify-start py-2" for="weight-date">Date</label>
+      <input
+        class="bg-blue-100 rounded p-2 col-span-2"
+        type="number"
+        name="daysHistory"
+        id="daysHistory"
+        v-model="daysHistory"
+      />
+    </div>
     <div
       class="grid justify-center md:border-2 rounded border-blue-500 p-4 md:mx-32 gap-4 text-sm md:text-xl"
     >
+    
       <VueApexCharts
         v-if="loaded"
         width="100%"
@@ -27,6 +38,7 @@ export default {
     loaded: false,
     openModal: false,
     weightData: [],
+    daysHistory: 90,
     url: '/.netlify/functions/weight-read-all',
     //Chart options
     pvOptions: null,
@@ -145,7 +157,7 @@ export default {
           accumulator + currentValue;
 
         this.weightData[counter].movingAvg =
-          movingAvg.reduce(reducer) / movingAvg.length;
+          Math.round(movingAvg.reduce(reducer) / movingAvg.length * 100) / 100;
       } else {
         this.weightData[counter].movingAvg = currentWeight;
       }
@@ -158,7 +170,7 @@ export default {
 
     // Set the values in the graph by looping over the array with
     // the filled days
-    // console.log(this.weightData);
+    console.log(this.weightData);
     this.weightData.forEach((value) => {
       this.pvOptions.xaxis.categories.push(
         new Date(value.weightDate).getTime(),
