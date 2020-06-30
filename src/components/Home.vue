@@ -63,19 +63,22 @@ export default {
     this.weightData = await resp.json();
     this.pvOptions = {
       xaxis: {
-        // TODO: See if you can set the type to date for better formatting
         type: 'datetime',
         categories: [],
       },
       stroke: {
         curve: 'smooth',
       },
-      colors: ['#002FA7'],
+      colors: ['#002FA7', '#80c2ff', '##003d75', '#bfe1ff'],
     };
 
     this.pvSeries = [
       {
         name: 'Weight',
+        data: [],
+      },
+      {
+        name: 'Moving Avg',
         data: [],
       },
     ];
@@ -97,6 +100,7 @@ export default {
     //   is found. That way the weight stays the same during that time creating a flat
     //   line over time. This I found was the best way to get around the empty days.
     let currentWeight = this.weightData[0].weightKilograms;
+    let movingAvg = [];
     // The loop is between the first date and the last
     while (currentDate <= maxDate) {
       // Use the counter to set the date
@@ -131,6 +135,19 @@ export default {
         currentWeight = this.weightData[counter].weightKilograms;
       }
 
+      const movingAvgLength = 7;
+      if (counter > movingAvgLength) {
+        if (movingAvg.length >= movingAvgLength) movingAvg.shift();
+        movingAvg.push(currentWeight);
+        const reducer = (accumulator, currentValue) =>
+          accumulator + currentValue;
+
+        this.weightData[counter].movingAvg =
+          movingAvg.reduce(reducer) / movingAvg.length;
+      } else {
+        this.weightData[counter].movingAvg = currentWeight;
+      }
+
       // Increase the counter
       counter++;
       // Set the date to the next day
@@ -139,11 +156,13 @@ export default {
 
     // Set the values in the graph by looping over the array with
     // the filled days
+    // console.log(this.weightData);
     this.weightData.forEach((value) => {
       this.pvOptions.xaxis.categories.push(
         new Date(value.weightDate).getTime(),
       );
       this.pvSeries[0].data.push(value.weightKilograms);
+      this.pvSeries[1].data.push(value.movingAvg);
     });
 
     this.loaded = true;
