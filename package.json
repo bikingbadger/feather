@@ -17,7 +17,7 @@
   "main": "app.js",
   "dependencies": {
     "apexcharts": "^3.19.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
     "encoding": "^0.1.12",
