@@ -23,6 +23,7 @@
     "encoding": "^0.1.12",
     "faunadb": "^2.14.0",
     "fetch": "^1.1.0",
+    "firebase": "^8.2.3",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.5.3",
     "vue-router": "^3.2.0"
