@@ -17,12 +17,13 @@
   "main": "app.js",
   "dependencies": {
     "apexcharts": "^3.19.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
     "encoding": "^0.1.12",
     "faunadb": "^2.14.0",
     "fetch": "^1.1.0",
+    "firebase": "^8.2.3",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.5.3",
     "vue-router": "^3.2.0"
@@ -72,7 +73,6 @@
     "> 1%",
     "last 2 versions"
   ],
-  "_id": "feather@1.0.0",
   "bugs": {
     "url": "https://github.com/bikingbadger/weight-tracker/issues"
   },
