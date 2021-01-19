@@ -25,23 +25,14 @@
 
       <div class="flex items-center justify-between">
         <button>
-          Login
+          Create
         </button>
-
-        <a
-          class="no-underline inline-block align-baseline font-bold text-sm text-blue hover:text-blue-dark float-right"
-          href="#"
-        >
-          Forgot Password?
-        </a>
       </div>
     </div>
     <div class="text-center">
       <p class="text-grey-dark text-sm">
-        Don't have an account?
-        <a href="register" class="no-underline text-blue font-bold"
-          >Create an Account</a
-        >.
+        Already have an account?
+        <a href="login" class="no-underline text-blue font-bold">Login</a>.
       </p>
     </div>
   </div>

@@ -18,6 +18,12 @@ const routes = [
       import(/* webpackChunkName: "home" */ '@/components/Login.vue'),
   },
   {
+    path: '/register',
+    name: 'register',
+    component: () =>
+      import(/* webpackChunkName: "home" */ '@/components/Register.vue'),
+  },
+  {
     path: '/weight',
     name: 'weight',
     // route level code-splitting
