@@ -62,9 +62,8 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
-          (user) => {
-            alert(`Logged in as ${user.email}`);
-            this.$router.push('/');
+          () => {
+            this.$router.go({ path: this.$router.path });
           },
           (err) => {
             alert(err.message);
