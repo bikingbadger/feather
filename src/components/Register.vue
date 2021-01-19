@@ -10,21 +10,23 @@
         <input
           type="text"
           class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-          placeholder="Your Username"
+          placeholder="Your Email"
+          v-model="email"
         />
       </div>
 
       <div class="mb-4">
         <!-- <label class="font-bold text-grey-darker block mb-2">Password</label> -->
         <input
-          type="text"
+          type="password"
           class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
           placeholder="Your Password"
+          v-model="password"
         />
       </div>
 
       <div class="flex items-center justify-between">
-        <button>
+        <button @click.prevent="register">
           Create
         </button>
       </div>
@@ -39,7 +41,29 @@
 </template>
 
 <script>
-export default {};
+import firebase from 'firebase';
+export default {
+  name: 'register',
+  data: () => {
+    return { email: '', password: '' };
+  },
+  methods: {
+    register ()  {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(
+          (user) => {
+            alert(`Account created for ${user.email}`);
+            this.$router.push('/');
+          },
+          (err) => {
+            alert(err.message);
+          },
+        );
+    },
+  },
+};
 </script>
 
 <style></style>
